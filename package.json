@@ -1,0 +1,65 @@
+{
+  "name": "graphql-filter-object",
+  "version": "1.0.0-beta.1",
+  "description": "filter objects and arrays according to a graphql-tag",
+  "author": "insidewhy <github@chilon.net>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/insidewhy/graphql-filter-object.git"
+  },
+  "keywords": [
+    "graphql",
+    "filter"
+  ],
+  "main": "dist.es5/index.js",
+  "module": "dist.es5m/index.js",
+  "es2015": "dist.es2015/index.js",
+  "typings": "dist.es2015/index",
+  "sideEffects": false,
+  "scripts": {
+    "prepublishOnly": "yarn build",
+    "build": "yarn build-modern && yarn build-es5 && yarn build-es5m",
+    "build-modern": "tsc -p src",
+    "build-es5": "tsc -p src --target es5 --outDir dist.es5",
+    "build-es5m": "yarn build-es5 -m es2015 --outDir dist.es5m",
+    "build-watch": "yarn build-es5 -w",
+    "clean": "rimraf 'dist*'",
+    "lint": "eslint 'src/*.ts'",
+    "lint-fix": "yarn lint --fix",
+    "run-prettier": "prettier 'src/*.ts' '*.md'",
+    "typecheck": "tsc -p src --noEmit",
+    "validate-prettiness": "yarn run-prettier -c",
+    "make-prettier": "yarn run-prettier --write",
+    "test": "yarn jest",
+    "watch": "yarn build-es5 && concurrently 'yarn build-watch' 'yarn jest-watch'",
+    "validate": "yarn test && yarn lint && yarn validate-prettiness",
+    "jest-watch": "yarn jest --watchAll"
+  },
+  "dependencies": {
+    "delay": "^5.0.0",
+    "fast-json-stable-stringify": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/jest": "26.0.23",
+    "@typescript-eslint/eslint-plugin": "4.23.0",
+    "@typescript-eslint/parser": "4.23.0",
+    "concurrently": "6.1.0",
+    "eslint": "7.26.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-react": "7.23.2",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "graphql": "^15.5.0",
+    "graphql-tag": "2.12.4",
+    "husky": "6.0.0",
+    "jest": "26.6.3",
+    "prettier": "2.3.0",
+    "pretty-quick": "3.1.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-test-renderer": "17.0.2",
+    "rimraf": "3.0.2",
+    "typescript": "4.2.4"
+  }
+}
