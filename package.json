@@ -37,7 +37,7 @@
     "validate": "yarn test && yarn lint && yarn validate-prettiness"
   },
   "devDependencies": {
-    "@types/jest": "26.0.23",
+    "@types/jest": "26.0.24",
     "@typescript-eslint/eslint-plugin": "4.24.0",
     "@typescript-eslint/parser": "4.24.0",
     "concurrently": "6.1.0",
